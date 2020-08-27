@@ -6,7 +6,6 @@ import { Box, Card, Text, Link, Flex, Button } from 'theme-ui'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import codeStrings from './codeStrings'
-import Typical from 'react-typical'
 
 const links = [{
   text: 'Glasses',
