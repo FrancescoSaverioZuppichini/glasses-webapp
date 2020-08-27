@@ -1,11 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { ThemeProvider } from 'theme-ui'
+import theme from './theme.js'
+import { Box } from 'theme-ui'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <ThemeProvider theme={theme}>
+    
+    <Box variant='app'>
+     
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -18,8 +23,8 @@ function App() {
         >
           Learn React
         </a>
-      </header>
-    </div>
+    </Box>
+    </ThemeProvider>
   );
 }
 
