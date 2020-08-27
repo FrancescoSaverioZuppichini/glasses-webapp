@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.5f361e03.chunk.css",
-    "main.js": "/static/js/main.dd0be94c.chunk.js",
-    "main.js.map": "/static/js/main.dd0be94c.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.92ee656d.js",
-    "runtime-main.js.map": "/static/js/runtime-main.92ee656d.js.map",
-    "static/js/2.6cb6d0fe.chunk.js": "/static/js/2.6cb6d0fe.chunk.js",
-    "static/js/2.6cb6d0fe.chunk.js.map": "/static/js/2.6cb6d0fe.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.31183b2eb7b4a461113496dfbbde51a0.js": "/precache-manifest.31183b2eb7b4a461113496dfbbde51a0.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.5f361e03.chunk.css.map": "/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.6cb6d0fe.chunk.js.LICENSE.txt": "/static/js/2.6cb6d0fe.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg"
+    "main.css": "/glasses-webapp/static/css/main.5f361e03.chunk.css",
+    "main.js": "/glasses-webapp/static/js/main.9d4fb465.chunk.js",
+    "main.js.map": "/glasses-webapp/static/js/main.9d4fb465.chunk.js.map",
+    "runtime-main.js": "/glasses-webapp/static/js/runtime-main.82082ff0.js",
+    "runtime-main.js.map": "/glasses-webapp/static/js/runtime-main.82082ff0.js.map",
+    "static/js/2.6cb6d0fe.chunk.js": "/glasses-webapp/static/js/2.6cb6d0fe.chunk.js",
+    "static/js/2.6cb6d0fe.chunk.js.map": "/glasses-webapp/static/js/2.6cb6d0fe.chunk.js.map",
+    "index.html": "/glasses-webapp/index.html",
+    "precache-manifest.16d1c02ed828b45cd7439e54a4d94503.js": "/glasses-webapp/precache-manifest.16d1c02ed828b45cd7439e54a4d94503.js",
+    "service-worker.js": "/glasses-webapp/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/glasses-webapp/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.6cb6d0fe.chunk.js.LICENSE.txt": "/glasses-webapp/static/js/2.6cb6d0fe.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/glasses-webapp/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.92ee656d.js",
+    "static/js/runtime-main.82082ff0.js",
     "static/js/2.6cb6d0fe.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.dd0be94c.chunk.js"
+    "static/js/main.9d4fb465.chunk.js"
   ]
 }
