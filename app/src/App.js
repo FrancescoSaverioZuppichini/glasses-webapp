@@ -56,7 +56,7 @@ const Code = () => {
   })
 
 
-  return (<Card variant='code'>
+  return (<Card variant='code' sx={{minHeight: '400px'}}>
     <SyntaxHighlighter language="python" style={atomOneLight} >
       {codeString}
     </SyntaxHighlighter>
