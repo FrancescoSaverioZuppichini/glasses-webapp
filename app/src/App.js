@@ -84,7 +84,7 @@ built on top of <strong>PyTorch</strong></Text>
                 </Flex>
               </Box>
               <Box mx={[0, 0, 4]}/>
-              <Box sx={{ flex: 1 }}  sx={{ maxWidth: ['92vw', '500px'] }}>
+              <Box sx={{ flex: 1, maxWidth: ['92vw', '500px']  }}>
                 <Code />
               </Box>
             </Flex>
