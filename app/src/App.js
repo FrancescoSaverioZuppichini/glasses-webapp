@@ -60,7 +60,7 @@ print([x.shape for x in features])
 # [torch.Size([1, 64, 56, 56]), torch.Size([1, 128, 28, 28]), torch.Size([1, 256, 14, 14]), torch.Size([1, 512, 7, 7])]`
 
 const Code = () => (
-  <Card variant='code' sx={{ maxWidth: '600px' }}>
+  <Card variant='code' sx={{ maxWidth: ['66vw', '600px'] }}>
     <SyntaxHighlighter language="python" style={atomOneLight} >
       {codeString}
     </SyntaxHighlighter>
@@ -71,10 +71,10 @@ const Actions = () => {
   const toLink = (href) => window.location = href
 
   return (
-    <Flex>
-      <Button mx={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/index.html')}>Doc</Button>
-      <Button mx={2}>Examples</Button>
-      <Button mx={2}>Models</Button>
+    <Flex sx={{flexWrap: 'wrap'}}> 
+      <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/index.html')}>Doc</Button>
+      <Button m={2}>Examples</Button>
+      <Button m={2}>Models</Button>
     </Flex>
   )
 }
@@ -100,7 +100,7 @@ built on top of <strong>PyTorch</strong></Text>
                   <Box my={2} />
                 </Flex>
               </Box>
-              <Box sx={{ flex: 1 }} >
+              <Box sx={{ flex: 1 }}>
                 <Code />
               </Box>
             </Flex>
