@@ -41,7 +41,7 @@ const NavBar = ({ links }) => (
 )
 
 const Code = () => (
-  <Card variant='code' sx={{ maxWidth: ['92vw', '600px'] }}>
+  <Card variant='code'>
     <SyntaxHighlighter language="python" style={atomOneLight} >
       {codeStrings[0]}
     </SyntaxHighlighter>
@@ -83,7 +83,8 @@ built on top of <strong>PyTorch</strong></Text>
                   <Box my={2} />
                 </Flex>
               </Box>
-              <Box sx={{ flex: 1 }}>
+              <Box mx={[0, 0, 4]}/>
+              <Box sx={{ flex: 1 }}  sx={{ maxWidth: ['92vw', '500px'] }}>
                 <Code />
               </Box>
             </Flex>
