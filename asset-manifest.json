@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/glasses-webapp/static/css/main.5f361e03.chunk.css",
-    "main.js": "/glasses-webapp/static/js/main.5203eff1.chunk.js",
-    "main.js.map": "/glasses-webapp/static/js/main.5203eff1.chunk.js.map",
+    "main.js": "/glasses-webapp/static/js/main.f2c05292.chunk.js",
+    "main.js.map": "/glasses-webapp/static/js/main.f2c05292.chunk.js.map",
     "runtime-main.js": "/glasses-webapp/static/js/runtime-main.82082ff0.js",
     "runtime-main.js.map": "/glasses-webapp/static/js/runtime-main.82082ff0.js.map",
     "static/js/2.b030e9d7.chunk.js": "/glasses-webapp/static/js/2.b030e9d7.chunk.js",
     "static/js/2.b030e9d7.chunk.js.map": "/glasses-webapp/static/js/2.b030e9d7.chunk.js.map",
     "index.html": "/glasses-webapp/index.html",
-    "precache-manifest.f9a5d11cc6f81a0ae91c4ff151b41974.js": "/glasses-webapp/precache-manifest.f9a5d11cc6f81a0ae91c4ff151b41974.js",
+    "precache-manifest.01fa0cabf65ea9e92c4bec50c62cfab5.js": "/glasses-webapp/precache-manifest.01fa0cabf65ea9e92c4bec50c62cfab5.js",
     "service-worker.js": "/glasses-webapp/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/glasses-webapp/static/css/main.5f361e03.chunk.css.map",
     "static/js/2.b030e9d7.chunk.js.LICENSE.txt": "/glasses-webapp/static/js/2.b030e9d7.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.82082ff0.js",
     "static/js/2.b030e9d7.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.5203eff1.chunk.js"
+    "static/js/main.f2c05292.chunk.js"
   ]
 }
