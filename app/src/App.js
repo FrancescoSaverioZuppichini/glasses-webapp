@@ -77,7 +77,7 @@ const Actions = () => {
 }
 
 const Footer = () => (
-  <Flex sx={{ position: 'absolute', bottom: 3 }}>
+  <Flex>
     <Text>Made with <span role='img' aria-label="love">❤️</span> by
     <Link href='https://www.linkedin.com/in/francesco-saverio-zuppichini-94659a150/' variant='primary'> Francesco Saverio Zuppichini</Link> and
     <Link href='https://www.linkedin.com/in/francescocicala/' variant='primary'> Francesco Cicala</Link>
@@ -114,6 +114,7 @@ built on top of <strong>PyTorch</strong></Text>
               </Box>
             </Flex>
           </Flex>
+          <Box mt={3}/>
           <Footer />
         </Box>
       </Box>
