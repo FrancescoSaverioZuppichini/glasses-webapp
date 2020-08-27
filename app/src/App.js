@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { ThemeProvider } from 'theme-ui'
 import theme from './theme.js'
@@ -6,6 +6,7 @@ import { Box, Card, Text, Link, Flex, Button } from 'theme-ui'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import codeStrings from './codeStrings'
+import Typical from 'react-typical'
 
 const links = [{
   text: 'Glasses',
@@ -40,13 +41,29 @@ const NavBar = ({ links }) => (
   </Box>
 )
 
-const Code = () => (
-  <Card variant='code'>
+const Code = () => {
+  const [codeString, setCodeString] = useState('')
+  const [lastIndex, setLastIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const c = codeStrings[0][lastIndex]
+      if ((lastIndex + 1) % codeStrings[0].length) {
+        setCodeString(lastIndex > 0 ? codeString + c : c)
+        setLastIndex((lastIndex + 1) % codeStrings[0].length)
+      }
+    }, 2)
+    return () => clearTimeout(timer);
+  })
+
+
+  return (<Card variant='code'>
     <SyntaxHighlighter language="python" style={atomOneLight} >
-      {codeStrings[0]}
+      {codeString}
     </SyntaxHighlighter>
   </Card>
-)
+  )
+}
 
 const Actions = () => {
   const toLink = (href) => window.location = href
@@ -60,15 +77,25 @@ const Actions = () => {
   )
 }
 
+const Footer = () => (
+  <Flex sx={{ position: 'absolute', bottom: 3 }}>
+    <Text>Made with <span role='img' aria-label="love">❤️</span> by
+    <Link href='https://www.linkedin.com/in/francesco-saverio-zuppichini-94659a150/' variant='primary'> Francesco Saverio Zuppichini</Link> and
+    <Link href='https://www.linkedin.com/in/francescocicala/' variant='primary'> Francesco Cicala</Link>
+    </Text>
+
+  </Flex >
+
+)
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Box variant='app'>
         <Box variant='container'>
           <NavBar links={links} />
-
           <Flex sx={{ flexDirection: 'column' }} variant='centering'>
-            <Box py={[3,4,6]} />
+            <Box py={[3, 4, 6]} />
             <Flex sx={{ flexDirection: ['column', 'column', 'row'] }}>
               <Box sx={{ flex: 2 }}>
                 <Flex sx={{ flexDirection: 'column' }}>
@@ -83,14 +110,13 @@ built on top of <strong>PyTorch</strong></Text>
                   <Box my={2} />
                 </Flex>
               </Box>
-              <Box mx={[0, 0, 4]}/>
-              <Box sx={{ flex: 1, maxWidth: ['92vw', '500px']  }}>
+              <Box sx={{ flex: 1, maxWidth: ['92vw', '500px'], minWidth: [0, '400px'] }}>
                 <Code />
               </Box>
             </Flex>
           </Flex>
+          <Footer />
         </Box>
-
       </Box>
     </ThemeProvider >
   );
