@@ -6,7 +6,6 @@ import { Box, Card, Text, Link, Flex, Button } from 'theme-ui'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import codeStrings from './codeStrings'
-import Typical from 'react-typical'
 
 const links = [{
   text: 'Glasses',
@@ -57,7 +56,7 @@ const Code = () => {
   })
 
 
-  return (<Card variant='code'>
+  return (<Card variant='code' sx={{minHeight: '400px'}}>
     <SyntaxHighlighter language="python" style={atomOneLight} >
       {codeString}
     </SyntaxHighlighter>
@@ -78,7 +77,7 @@ const Actions = () => {
 }
 
 const Footer = () => (
-  <Flex sx={{ position: 'absolute', bottom: 3 }}>
+  <Flex>
     <Text>Made with <span role='img' aria-label="love">❤️</span> by
     <Link href='https://www.linkedin.com/in/francesco-saverio-zuppichini-94659a150/' variant='primary'> Francesco Saverio Zuppichini</Link> and
     <Link href='https://www.linkedin.com/in/francescocicala/' variant='primary'> Francesco Cicala</Link>
@@ -115,6 +114,7 @@ built on top of <strong>PyTorch</strong></Text>
               </Box>
             </Flex>
           </Flex>
+          <Box mt={3}/>
           <Footer />
         </Box>
       </Box>
