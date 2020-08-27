@@ -56,7 +56,7 @@ const theme = {
     }
   },
   container: {
-    padding: [3, 4, 5]
+    padding: [3, 4]
   },
   cards: {
     code: {
@@ -87,7 +87,6 @@ const theme = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'center',
 
   },
   vCentering: {

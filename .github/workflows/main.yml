@@ -21,8 +21,7 @@ jobs:
           npm run build 
           mv ./build/ ../docs
           touch ../docs/.nojekyll
-        env:
-          CI: true
+
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.5.9
