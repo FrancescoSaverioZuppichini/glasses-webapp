@@ -30,12 +30,6 @@ const theme = {
     body: 1.5,
     heading: 1.125,
   },
-  links: {
-    bold: {
-      fontWeight: 'bold',
-      textDecoration: 'underline'
-    }
-  },
   fontSizes: [
     14, 16, 20, 24, 28, 48, 64,
   ],
