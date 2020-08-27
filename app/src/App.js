@@ -91,7 +91,7 @@ function App() {
             <Flex sx={{ flexDirection: ['column', 'column', 'row'] }}>
               <Box sx={{ flex: 2 }}>
                 <Flex sx={{ flexDirection: 'column' }}>
-                  <Text sx={{ fontSize: 6, fontWeight: 'bold' }} >Glasses <span role='img'>😎</span></Text>
+                  <Text sx={{ fontSize: 6, fontWeight: 'bold' }} >Glasses <span role='img' aria-label="glasses">😎</span></Text>
                   <Text mt={2} sx={{ fontSize: 4, maxWidth: '600px' }} >Compact, concise and customizable
              deep learning <strong>computer vision</strong> library
 built on top of <strong>PyTorch</strong></Text>
