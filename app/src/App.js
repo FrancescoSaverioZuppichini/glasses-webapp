@@ -51,7 +51,7 @@ const Code = () => {
         setCodeString(lastIndex > 0 ? codeString + c : c)
         setLastIndex((lastIndex + 1) % codeStrings[0].length)
       }
-    }, 2)
+    }, 10)
     return () => clearTimeout(timer);
   })
 
