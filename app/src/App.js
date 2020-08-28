@@ -56,7 +56,7 @@ const Code = () => {
   })
 
 
-  return (<Card variant='code' sx={{minHeight: '400px'}}>
+  return (<Card variant='code' sx={{ minHeight: '400px' }}>
     <SyntaxHighlighter language="python" style={atomOneLight} >
       {codeString}
     </SyntaxHighlighter>
@@ -87,21 +87,13 @@ const Footer = () => (
 
 )
 
-function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <Box variant='app'>
-        <Box variant='container'>
-          <NavBar links={links} />
-          <Flex sx={{ flexDirection: 'column' }} variant='centering'>
-            <Box py={[3, 4, 6]} />
-            <Flex sx={{ flexDirection: ['column', 'column', 'row'] }}>
-              <Box sx={{ flex: 2 }}>
+const Header = () => (
+  <Box sx={{ flex: 2 }}>
                 <Flex sx={{ flexDirection: 'column' }}>
                   <Text sx={{ fontSize: 6, fontWeight: 'bold' }} >Glasses
                   <span role='img' aria-label="glasses">😎</span>
                   </Text>
-                  <Text mt={2} sx={{ fontSize: 4, maxWidth: '600px' }} >Compact, concise and customizable
+                  <Text mt={2} sx={{ fontSize: 4, maxWidth: '800px' }} >Compact, concise and customizable
              deep learning <strong>computer vision</strong> library
 built on top of <strong>PyTorch</strong></Text>
                   <Box my={4} />
@@ -109,15 +101,30 @@ built on top of <strong>PyTorch</strong></Text>
                   <Box my={2} />
                 </Flex>
               </Box>
-              <Box sx={{ flex: 1, maxWidth: ['92vw', '500px'], minWidth: [0, '400px'] }}>
+)
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <Flex variant='app'>
+        <Flex variant='container' sx={{flexDirection: 'column', width: '100%'}}>
+          <Box sx={{flex: 0}}>
+          <NavBar links={links} />
+          </Box>
+          <Flex sx={{ flexDirection: 'column' }}>
+            <Box py={[3, 4, 6]} />
+            <Flex sx={{ flexDirection: ['column', 'column', 'row'] }} px={[2,3,4]}>
+              <Header/>
+              <Box sx={{ flex: 1, maxWidth: ['92vw'], minWidth: [0, '400px'] }}>
                 <Code />
               </Box>
             </Flex>
           </Flex>
-          <Box mt={3}/>
+          <Box mt={3} />
+          <Box sx={{flexGrow: 1}}/>
           <Footer />
-        </Box>
-      </Box>
+        </Flex>
+      </Flex>
     </ThemeProvider >
   );
 }
