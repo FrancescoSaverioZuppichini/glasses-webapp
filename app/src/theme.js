@@ -79,6 +79,10 @@ const theme = {
       '&:active': {
         boxShadow: '2px 2px 16px rgba(0, 0, 0, 0.25)',
         // outline:'none'
+      },
+      '&:hover': {
+        boxShadow: '2px 2px 16px rgba(0, 0, 0, 0.25)',
+        // outline:'none'
       }
     },
    
