@@ -6,6 +6,7 @@ import { Box, Card, Text, Link, Flex, Button } from 'theme-ui'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import codeStrings from './codeStrings'
+import ReactMarkdown from 'react-markdown'
 
 const links = [{
   text: 'Glasses',
@@ -93,6 +94,7 @@ const Header = () => (
                   <Text sx={{ fontSize: 6, fontWeight: 'bold' }} >Glasses
                   <span role='img' aria-label="glasses">😎</span>
                   </Text>
+                  <ReactMarkdown source={'[![codecov](https://codecov.io/gh/FrancescoSaverioZuppichini/glasses/branch/develop/graph/badge.svg)](https://codecov.io/gh/FrancescoSaverioZuppichini/glasses)'} />
                   <Text mt={2} sx={{ fontSize: 4, maxWidth: '800px' }} >Compact, concise and customizable
              deep learning <strong>computer vision</strong> library
 built on top of <strong>PyTorch</strong></Text>
