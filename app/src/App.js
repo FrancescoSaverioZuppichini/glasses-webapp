@@ -7,6 +7,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import codeStrings from './codeStrings'
 import ReactMarkdown from 'react-markdown'
+import github from './github.svg'
 
 const links = [{
   text: 'Glasses',
@@ -28,18 +29,43 @@ const links = [{
 ]
 
 const NavBar = ({ links }) => (
-  <Box sx={{ flex: 1 }} >
-    <Flex>
+    <Flex sx={{width: '100%'}}>
       {links.map(({ text, href }) =>
         (
           <Link href={href} variant='primary' key={href}>
             <Text mx={3} sx={{ fontSize: 3 }}>{text}</Text>
           </Link>
         ))}
-
+    <Box sx={{flexGrow:1}}>
+      
+    </Box>
+    <Link href='https://github.com/FrancescoSaverioZuppichini/glasses'>
+      <img height='28px' src={github} alt='git'></img>
+      </Link>
     </Flex>
-  </Box>
 )
+
+const Typing = ({ text, children, speed=10 }) => {
+  const [currentText, setCodeString] = useState('')
+  const [lastIndex, setLastIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const c = text[lastIndex]
+      if ((lastIndex + 1) % text.length) {
+        setCodeString(lastIndex > 0 ? currentText + c : c)
+        setLastIndex((lastIndex + 1) % text.length)
+      }
+    }, speed)
+    return () => clearTimeout(timer);
+  })
+
+  return (
+    <div>
+      {children(currentText)}
+    </div>
+  )
+}
 
 const Code = () => {
   const [codeString, setCodeString] = useState('')
@@ -57,11 +83,18 @@ const Code = () => {
   })
 
 
-  return (<Card variant='code' sx={{ minHeight: '400px' }}>
-    <SyntaxHighlighter language="python" style={atomOneLight} >
-      {codeString}
-    </SyntaxHighlighter>
-  </Card>
+  return (
+    <Card variant='code' sx={{ minHeight: '400px' }}>
+
+      <Typing text={codeStrings[0]}>
+        {currentText => (
+          <SyntaxHighlighter language="python" style={atomOneLight} >
+            {currentText}
+          </SyntaxHighlighter>
+        )}
+      </Typing>
+    </Card>
+
   )
 }
 
@@ -90,40 +123,40 @@ const Footer = () => (
 
 const Header = () => (
   <Box sx={{ flex: 2 }}>
-                <Flex sx={{ flexDirection: 'column' }}>
-                  <Text sx={{ fontSize: 6, fontWeight: 'bold' }} >Glasses
+    <Flex sx={{ flexDirection: 'column' }}>
+      <Text sx={{ fontSize: 6, fontWeight: 'bold' }} >Glasses
                   <span role='img' aria-label="glasses">😎</span>
-                  </Text>
-                  <ReactMarkdown source={'[![codecov](https://codecov.io/gh/FrancescoSaverioZuppichini/glasses/branch/develop/graph/badge.svg)](https://codecov.io/gh/FrancescoSaverioZuppichini/glasses)'} />
-                  <Text mt={2} sx={{ fontSize: 4, maxWidth: '800px' }} >Compact, concise and customizable
+      </Text>
+      <ReactMarkdown source={'[![codecov](https://codecov.io/gh/FrancescoSaverioZuppichini/glasses/branch/develop/graph/badge.svg)](https://codecov.io/gh/FrancescoSaverioZuppichini/glasses)'} />
+      <Text mt={2} sx={{ fontSize: 4, maxWidth: '800px' }} >Compact, concise and customizable
              deep learning <strong>computer vision</strong> library
 built on top of <strong>PyTorch</strong></Text>
-                  <Box my={4} />
-                  <Actions />
-                  <Box my={2} />
-                </Flex>
-              </Box>
+      <Box my={4} />
+      <Actions />
+      <Box my={2} />
+    </Flex>
+  </Box>
 )
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Flex variant='app'>
-        <Flex variant='container' sx={{flexDirection: 'column', width: '100%'}}>
-          <Box sx={{flex: 0}}>
-          <NavBar links={links} />
+        <Flex variant='container' sx={{ flexDirection: 'column', width: '100%' }}>
+          <Box sx={{ flex: 0 }}>
+            <NavBar links={links} />
           </Box>
           <Flex sx={{ flexDirection: 'column' }}>
             <Box py={[3, 4, 6]} />
-            <Flex sx={{ flexDirection: ['column', 'column', 'row'] }} px={[2,3,4]}>
-              <Header/>
+            <Flex sx={{ flexDirection: ['column', 'column', 'row'] }} px={[2, 3, 4]}>
+              <Header />
               <Box sx={{ flex: 1, maxWidth: ['92vw'], minWidth: [0, '400px'] }}>
                 <Code />
               </Box>
             </Flex>
           </Flex>
           <Box mt={3} />
-          <Box sx={{flexGrow: 1}}/>
+          <Box sx={{ flexGrow: 1 }} />
           <Footer />
         </Flex>
       </Flex>
