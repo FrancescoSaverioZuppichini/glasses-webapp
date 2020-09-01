@@ -15,7 +15,7 @@ const links = [{
 },
 {
   text: 'Doc',
-  href: 'https://francescosaveriozuppichini.github.io/glasses/index.html'
+  href: 'https://francescosaveriozuppichini.github.io/glasses/'
 },
 {
   text: 'Examples',
@@ -103,7 +103,7 @@ const Actions = () => {
 
   return (
     <Flex sx={{ flexWrap: 'wrap' }}>
-      <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/index.html')}>Doc</Button>
+      <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/')}>Doc</Button>
       <Button m={2}>Examples</Button>
       <Button m={2}>Models</Button>
     </Flex>
