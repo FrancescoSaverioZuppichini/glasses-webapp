@@ -19,7 +19,7 @@ const links = [{
 },
 {
   text: 'Examples',
-  href: 'https://francescosaveriozuppichini.github.io/glasses/glasses.html#'
+  href: 'https://francescosaveriozuppichini.github.io/glasses/glasses.html'
 },
 {
   text: 'Models',
@@ -45,7 +45,7 @@ const NavBar = ({ links }) => (
     </Flex>
 )
 
-const Typing = ({ text, children, speed=10 }) => {
+const Typing = ({ text, children, speed=15, onFinish }) => {
   const [currentText, setCodeString] = useState('')
   const [lastIndex, setLastIndex] = useState(0)
 
@@ -55,6 +55,11 @@ const Typing = ({ text, children, speed=10 }) => {
       if ((lastIndex + 1) % text.length) {
         setCodeString(lastIndex > 0 ? currentText + c : c)
         setLastIndex((lastIndex + 1) % text.length)
+      } else {
+        if (onFinish){
+          onFinish()
+          setLastIndex(0)
+        }
       }
     }, speed)
     return () => clearTimeout(timer);
@@ -68,25 +73,17 @@ const Typing = ({ text, children, speed=10 }) => {
 }
 
 const Code = () => {
-  const [codeString, setCodeString] = useState('')
   const [lastIndex, setLastIndex] = useState(0)
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const c = codeStrings[0][lastIndex]
-      if ((lastIndex + 1) % codeStrings[0].length) {
-        setCodeString(lastIndex > 0 ? codeString + c : c)
-        setLastIndex((lastIndex + 1) % codeStrings[0].length)
-      }
-    }, 10)
-    return () => clearTimeout(timer);
-  })
 
+  const onTypingFinish = () => {
+    const newLastIndex = lastIndex + 1  < codeStrings.length  ? lastIndex + 1 : 0
+    setLastIndex(newLastIndex)
+  }
 
   return (
     <Card variant='code' sx={{ minHeight: '400px' }}>
-
-      <Typing text={codeStrings[0]}>
+      <Typing text={codeStrings[lastIndex]} onFinish={onTypingFinish}>
         {currentText => (
           <SyntaxHighlighter language="python" style={atomOneLight} >
             {currentText}
@@ -104,8 +101,8 @@ const Actions = () => {
   return (
     <Flex sx={{ flexWrap: 'wrap' }}>
       <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/')}>Doc</Button>
-      <Button m={2}>Examples</Button>
-      <Button m={2}>Models</Button>
+      <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/glasses.html')}>Examples</Button>
+      <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/glasses.nn.models.html')}>Models</Button>
     </Flex>
   )
 }
@@ -150,7 +147,7 @@ function App() {
             <Box py={[3, 4, 6]} />
             <Flex sx={{ flexDirection: ['column', 'column', 'row'] }} px={[2, 3, 4]}>
               <Header />
-              <Box sx={{ flex: 1, maxWidth: ['92vw'], minWidth: [0, '400px'] }}>
+              <Box sx={{ flex: 1, maxWidth: ['92vw'], minWidth: [0, '600px'] }}>
                 <Code />
               </Box>
             </Flex>
