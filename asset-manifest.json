@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/glasses-webapp/static/css/main.5f361e03.chunk.css",
-    "main.js": "/glasses-webapp/static/js/main.942be896.chunk.js",
-    "main.js.map": "/glasses-webapp/static/js/main.942be896.chunk.js.map",
+    "main.js": "/glasses-webapp/static/js/main.fcd62dae.chunk.js",
+    "main.js.map": "/glasses-webapp/static/js/main.fcd62dae.chunk.js.map",
     "runtime-main.js": "/glasses-webapp/static/js/runtime-main.82082ff0.js",
     "runtime-main.js.map": "/glasses-webapp/static/js/runtime-main.82082ff0.js.map",
-    "static/js/2.8db69726.chunk.js": "/glasses-webapp/static/js/2.8db69726.chunk.js",
-    "static/js/2.8db69726.chunk.js.map": "/glasses-webapp/static/js/2.8db69726.chunk.js.map",
+    "static/js/2.da77464b.chunk.js": "/glasses-webapp/static/js/2.da77464b.chunk.js",
+    "static/js/2.da77464b.chunk.js.map": "/glasses-webapp/static/js/2.da77464b.chunk.js.map",
     "index.html": "/glasses-webapp/index.html",
-    "precache-manifest.cb451d60f592d4a778355493f1d04123.js": "/glasses-webapp/precache-manifest.cb451d60f592d4a778355493f1d04123.js",
+    "precache-manifest.b3586619edff335ca907d3e223a1ed94.js": "/glasses-webapp/precache-manifest.b3586619edff335ca907d3e223a1ed94.js",
     "service-worker.js": "/glasses-webapp/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/glasses-webapp/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.8db69726.chunk.js.LICENSE.txt": "/glasses-webapp/static/js/2.8db69726.chunk.js.LICENSE.txt",
+    "static/js/2.da77464b.chunk.js.LICENSE.txt": "/glasses-webapp/static/js/2.da77464b.chunk.js.LICENSE.txt",
     "static/media/github.svg": "/glasses-webapp/static/media/github.f0aed993.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.82082ff0.js",
-    "static/js/2.8db69726.chunk.js",
+    "static/js/2.da77464b.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.942be896.chunk.js"
+    "static/js/main.fcd62dae.chunk.js"
   ]
 }
