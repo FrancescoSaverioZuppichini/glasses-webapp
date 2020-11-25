@@ -5,9 +5,10 @@ import theme from './theme.js'
 import { Box, Card, Text, Link, Flex, Button } from 'theme-ui'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
-import codeStrings from './codeStrings'
+import { templates, models, descriptions } from './codeStrings'
 import ReactMarkdown from 'react-markdown'
 import github from './github.svg'
+import axios from 'axios'
 
 const links = [{
   text: 'Glasses',
@@ -19,7 +20,7 @@ const links = [{
 },
 {
   text: 'Examples',
-  href: 'https://francescosaveriozuppichini.github.io/glasses/glasses.html'
+  href: 'https://francescosaveriozuppichini.github.io/glasses/tutorials/README.html#getting-started'
 },
 {
   text: 'Models',
@@ -28,24 +29,26 @@ const links = [{
 
 ]
 
+const sections = ['classification', 'segmentation', 'interpretability', 'customization']
+
 const NavBar = ({ links }) => (
-    <Flex sx={{width: '100%'}}>
-      {links.map(({ text, href }) =>
-        (
-          <Link href={href} variant='primary' key={href}>
-            <Text mx={3} sx={{ fontSize: 3 }}>{text}</Text>
-          </Link>
-        ))}
-    <Box sx={{flexGrow:1}}>
-      
+  <Flex sx={{ width: '100%' }}>
+    {links.map(({ text, href }) =>
+      (
+        <Link href={href} variant='primary' key={href}>
+          <Text mx={3} sx={{ fontSize: 3 }}>{text}</Text>
+        </Link>
+      ))}
+    <Box sx={{ flexGrow: 1 }}>
+
     </Box>
     <Link href='https://github.com/FrancescoSaverioZuppichini/glasses'>
       <img height='28px' src={github} alt='git'></img>
-      </Link>
-    </Flex>
+    </Link>
+  </Flex>
 )
 
-const Typing = ({ text, children, speed=15, onFinish }) => {
+const Typing = ({ text, children, speed = 15, onFinish }) => {
   const [currentText, setCodeString] = useState('')
   const [lastIndex, setLastIndex] = useState(0)
 
@@ -56,7 +59,7 @@ const Typing = ({ text, children, speed=15, onFinish }) => {
         setCodeString(lastIndex > 0 ? currentText + c : c)
         setLastIndex((lastIndex + 1) % text.length)
       } else {
-        if (onFinish){
+        if (onFinish) {
           onFinish()
           setLastIndex(0)
         }
@@ -72,18 +75,20 @@ const Typing = ({ text, children, speed=15, onFinish }) => {
   )
 }
 
+
 const Code = () => {
   const [lastIndex, setLastIndex] = useState(0)
 
+  const code = templates['classification'](models[lastIndex])
 
   const onTypingFinish = () => {
-    const newLastIndex = lastIndex + 1  < codeStrings.length  ? lastIndex + 1 : 0
+    const newLastIndex = lastIndex + 1 < code.length ? lastIndex + 1 : 0
     setLastIndex(newLastIndex)
   }
 
   return (
     <Card variant='code' sx={{ minHeight: '400px' }}>
-      <Typing text={codeStrings[lastIndex]} onFinish={onTypingFinish}>
+      <Typing text={code} onFinish={onTypingFinish}>
         {currentText => (
           <SyntaxHighlighter language="python" style={atomOneLight} >
             {currentText}
@@ -95,28 +100,44 @@ const Code = () => {
   )
 }
 
+
+
 const Actions = () => {
   const toLink = (href) => window.location = href
 
   return (
     <Flex sx={{ flexWrap: 'wrap' }}>
       <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/')}>Doc</Button>
-      <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/glasses.html')}>Examples</Button>
+      <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/tutorials/README.html#getting-started')}>Examples</Button>
       <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/glasses.nn.models.html')}>Models</Button>
     </Flex>
   )
 }
 
-const Footer = () => (
-  <Flex>
-    <Text>Made with <span role='img' aria-label="love">❤️</span> by
-    <Link href='https://www.linkedin.com/in/francesco-saverio-zuppichini-94659a150/' variant='primary'> Francesco Saverio Zuppichini</Link> and
-    <Link href='https://www.linkedin.com/in/francescocicala/' variant='primary'> Francesco Cicala</Link>
-    </Text>
+const ShowCaseSection = (section, model = 'resnet34', backgroundColor = 'background') =>
+  <Box variant='section' sx={{ backgroundColor: backgroundColor }}>
+     <Text sx={{ fontSize: 4 }}>{section.charAt(0).toUpperCase() + section.slice(1)}
+        </Text>
+    <Flex sx={{flexDirection: ['column', 'column', 'row'], alignItems: 'center'}}>
+      <Box sx={{ flex: 1 }}>
+        <Text sx={{ fontSize: 2 }}>
+        {descriptions[section]}
+        </Text>
+      </Box>
+      <Box p={3}></Box>
+      <Box sx={{ flex: 1, maxWidth: '99%'}}>
+        <Card variant='code'>
+          <SyntaxHighlighter language="python" style={atomOneLight} >
+            {templates[section](model)}
+          </SyntaxHighlighter>
+        </Card>
+      </Box>
 
-  </Flex >
+    </Flex>
+  </Box>
 
-)
+
+
 
 const Header = () => (
   <Box sx={{ flex: 2 }}>
@@ -134,6 +155,32 @@ built on top of <strong>PyTorch</strong></Text>
     </Flex>
   </Box>
 )
+
+const Footer = () => (
+  <Flex>
+    <Text>Made with <span role='img' aria-label="love">❤️</span> by
+    <Link href='https://www.linkedin.com/in/francesco-saverio-zuppichini-94659a150/' variant='primary'> Francesco Saverio Zuppichini</Link> and
+    <Link href='https://www.linkedin.com/in/francescocicala/' variant='primary'> Francesco Cicala</Link>
+    </Text>
+
+  </Flex >
+
+)
+
+const Table = () => {
+  const [table, setTable] = useState('')
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get('https://raw.githubusercontent.com/FrancescoSaverioZuppichini/glasses/develop/table.md')
+      setTable(data)
+
+    }
+    fetchData()
+  }, [])
+
+  return <ReactMarkdown source={table}></ReactMarkdown>
+}
 
 function App() {
   return (
@@ -154,9 +201,23 @@ function App() {
           </Flex>
           <Box mt={3} />
           <Box sx={{ flexGrow: 1 }} />
-          <Footer />
+          <Box py={[3, 4, 6]} />
         </Flex>
       </Flex>
+      {sections.map((section, i) => {
+        const backgroundColor = i % 2 ? 'background' : 'white'
+        return (ShowCaseSection(section, 'resnet34', backgroundColor))
+      })}
+      {/* <Box variant='section'>
+        <Text sx={{ fontSize: 4 }}>Models
+            </Text>
+        <Box p={2}></Box>
+        <Card variant='code' sx={{overflowX: 'scroll'}}>
+          <Table />
+        </Card>
+
+      </Box> */}
+      <Box p={4}><Footer /></Box>
     </ThemeProvider >
   );
 }

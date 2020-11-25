@@ -36,7 +36,7 @@ const theme = {
   app: {
     margin: 0,
     minWidth: '100vw',
-    minHeight: '100vh',
+    // minHeight: '100vh',
     background: 'linear-gradient(270deg, #AA47BA 0%, #4D5098 100%)',
     color: 'white'
   },
@@ -61,7 +61,7 @@ const theme = {
   cards: {
     code: {
       background: 'rgb(250, 250, 250)',
-      boxShadow: '8px 8px 16px rgba(0, 0, 0, 0.25)',
+      boxShadow: '8px 8px 16px 8px rgba(0, 0, 0, 0.25)',
       borderRadius: '36px',
       padding: 3,
       color: 'black'
@@ -85,6 +85,24 @@ const theme = {
         // outline:'none'
       }
     },
+    text : {
+      background: 'rgba(143, 97, 202, 0.2)',
+      boxShadow: '8px 8px 16px rgba(0, 0, 0, 0.25)',
+      borderRadius: '32px',
+      fontSize: 2,
+      paddingX: 4,
+      paddingY: 3,
+      outline: 'none',
+      '&:active': {
+        boxShadow: '2px 2px 16px rgba(0, 0, 0, 0.25)',
+        // outline:'none'
+      },
+      '&:hover': {
+        boxShadow: '2px 2px 16px rgba(0, 0, 0, 0.25)',
+        // outline:'none'
+      }
+    }
+
    
   },
   centering: {
@@ -100,6 +118,11 @@ const theme = {
     display: 'flex',
     width: '100%'
 
+
+  },
+  section: {
+    paddingX: [2, 3, 5],
+    paddingY: [4, 5, 5]
 
   }
 }
