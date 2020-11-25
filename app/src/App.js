@@ -8,7 +8,7 @@ import { atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { templates, models, descriptions } from './codeStrings'
 import ReactMarkdown from 'react-markdown'
 import github from './github.svg'
-import axios from 'axios'
+// import axios from 'axios'
 
 const links = [{
   text: 'Glasses',
@@ -114,18 +114,19 @@ const Actions = () => {
   )
 }
 
-const ShowCaseSection = (section, model = 'resnet34', backgroundColor = 'background') =>
+const ShowCaseSection = ({ section, model = 'resnet34', backgroundColor = 'background' }) =>
   <Box variant='section' sx={{ backgroundColor: backgroundColor }}>
-     <Text sx={{ fontSize: 4 }}>{section.charAt(0).toUpperCase() + section.slice(1)}
-        </Text>
-    <Flex sx={{flexDirection: ['column', 'column', 'row'], alignItems: 'center'}}>
+    <Text sx={{ fontSize: 4 }}>{section.charAt(0).toUpperCase() + section.slice(1)}
+    </Text>
+    <Box mb={2} />
+    <Flex sx={{ flexDirection: ['column', 'column', 'row'], alignItems: 'center' }}>
       <Box sx={{ flex: 1 }}>
         <Text sx={{ fontSize: 2 }}>
-        {descriptions[section]}
+          {descriptions[section]}
         </Text>
       </Box>
       <Box p={3}></Box>
-      <Box sx={{ flex: 1, maxWidth: '99%'}}>
+      <Box sx={{ flex: 1, maxWidth: '99%' }}>
         <Card variant='code'>
           <SyntaxHighlighter language="python" style={atomOneLight} >
             {templates[section](model)}
@@ -167,20 +168,20 @@ const Footer = () => (
 
 )
 
-const Table = () => {
-  const [table, setTable] = useState('')
+// const Table = () => {
+//   const [table, setTable] = useState('')
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get('https://raw.githubusercontent.com/FrancescoSaverioZuppichini/glasses/develop/table.md')
-      setTable(data)
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const { data } = await axios.get('https://raw.githubusercontent.com/FrancescoSaverioZuppichini/glasses/develop/table.md')
+//       setTable(data)
 
-    }
-    fetchData()
-  }, [])
+//     }
+//     fetchData()
+//   }, [])
 
-  return <ReactMarkdown source={table}></ReactMarkdown>
-}
+//   return <ReactMarkdown source={table}></ReactMarkdown>
+// }
 
 function App() {
   return (
@@ -192,7 +193,7 @@ function App() {
           </Box>
           <Flex sx={{ flexDirection: 'column' }}>
             <Box py={[3, 4, 6]} />
-            <Flex sx={{ flexDirection: ['column', 'column', 'row'] }} px={[2, 3, 4]}>
+            <Flex sx={{ flexDirection: ['column', 'column', 'column', 'row'] }} px={[2, 3, 4]}>
               <Header />
               <Box sx={{ flex: 1, maxWidth: ['92vw'], minWidth: [0, '600px'] }}>
                 <Code />
@@ -206,7 +207,7 @@ function App() {
       </Flex>
       {sections.map((section, i) => {
         const backgroundColor = i % 2 ? 'background' : 'white'
-        return (ShowCaseSection(section, 'resnet34', backgroundColor))
+        return (<ShowCaseSection section={section} model='resnet34' backgroundColor={backgroundColor} key={section} />)
       })}
       {/* <Box variant='section'>
         <Text sx={{ fontSize: 4 }}>Models
