@@ -5,7 +5,7 @@ import theme from './theme.js'
 import { Box, Card, Text, Link, Flex, Button } from 'theme-ui'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
-import { templates, models, descriptions } from './codeStrings'
+import { templates, models } from './codeStrings'
 import ReactMarkdown from 'react-markdown'
 import github from './github.svg'
 // import axios from 'axios'
@@ -29,7 +29,7 @@ const links = [{
 
 ]
 
-const sections = ['classification', 'segmentation', 'interpretability', 'customization']
+// const sections = ['classification', 'segmentation', 'interpretability', 'customization']
 
 const NavBar = ({ links }) => (
   <Flex sx={{ width: '100%' }}>
@@ -114,28 +114,28 @@ const Actions = () => {
   )
 }
 
-const ShowCaseSection = ({ section, model = 'resnet34', backgroundColor = 'background' }) =>
-  <Box variant='section' sx={{ backgroundColor: backgroundColor }}>
-    <Text sx={{ fontSize: 4 }}>{section.charAt(0).toUpperCase() + section.slice(1)}
-    </Text>
-    <Box mb={2} />
-    <Flex sx={{ flexDirection: ['column', 'column', 'column', 'row'], alignItems: 'center' }}>
-      <Box sx={{ flex: 1 }}>
-        <Text sx={{ fontSize: 2 }}>
-          {descriptions[section]}
-        </Text>
-      </Box>
-      <Box p={3}></Box>
-      <Box sx={{ flex: 1, maxWidth: '99%' }}>
-        <Card>
-          <SyntaxHighlighter language="python" style={atomOneLight} wrapLines={true}>
-            {templates[section](model)}
-          </SyntaxHighlighter>
-        </Card>
-      </Box>
+// const ShowCaseSection = ({ section, model = 'resnet34', backgroundColor = 'background' }) =>
+//   <Box variant='section' sx={{ backgroundColor: backgroundColor }}>
+//     <Text sx={{ fontSize: 4 }}>{section.charAt(0).toUpperCase() + section.slice(1)}
+//     </Text>
+//     <Box mb={2} />
+//     <Flex sx={{ flexDirection: ['column', 'column', 'column', 'row'], alignItems: 'center' }}>
+//       <Box sx={{ flex: 1 }}>
+//         <Text sx={{ fontSize: 2 }}>
+//           {descriptions[section]}
+//         </Text>
+//       </Box>
+//       <Box p={3}></Box>
+//       <Box sx={{ flex: 1, maxWidth: '99%' }}>
+//         <Card>
+//           <SyntaxHighlighter language="python" style={atomOneLight} wrapLines={true}>
+//             {templates[section](model)}
+//           </SyntaxHighlighter>
+//         </Card>
+//       </Box>
 
-    </Flex>
-  </Box>
+//     </Flex>
+//   </Box>
 
 
 
@@ -203,12 +203,14 @@ function App() {
           <Box mt={3} />
           <Box sx={{ flexGrow: 1 }} />
           <Box py={[3, 4, 6]} />
+          <Box p={4}><Footer /></Box>
+
         </Flex>
       </Flex>
-      {sections.map((section, i) => {
+      {/* {sections.map((section, i) => {
         const backgroundColor = i % 2 ? 'background' : 'white'
         return (<ShowCaseSection section={section} model='resnet34' backgroundColor={backgroundColor} key={section} />)
-      })}
+      })} */}
       {/* <Box variant='section'>
         <Text sx={{ fontSize: 4 }}>Models
             </Text>
@@ -218,7 +220,7 @@ function App() {
         </Card>
 
       </Box> */}
-      <Box p={4}><Footer /></Box>
+      {/* <Box p={4}><Footer /></Box> */}
     </ThemeProvider >
   );
 }

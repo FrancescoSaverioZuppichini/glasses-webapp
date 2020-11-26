@@ -36,7 +36,7 @@ const theme = {
   app: {
     margin: 0,
     minWidth: '100vw',
-    // minHeight: '100vh',
+    minHeight: '100vh',
     background: 'linear-gradient(270deg, #AA47BA 0%, #4D5098 100%)',
     color: 'white'
   },
