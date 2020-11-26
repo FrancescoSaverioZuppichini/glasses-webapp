@@ -119,7 +119,7 @@ const ShowCaseSection = ({ section, model = 'resnet34', backgroundColor = 'backg
     <Text sx={{ fontSize: 4 }}>{section.charAt(0).toUpperCase() + section.slice(1)}
     </Text>
     <Box mb={2} />
-    <Flex sx={{ flexDirection: ['column', 'column', 'row'], alignItems: 'center' }}>
+    <Flex sx={{ flexDirection: ['column', 'column', 'column', 'row'], alignItems: 'center' }}>
       <Box sx={{ flex: 1 }}>
         <Text sx={{ fontSize: 2 }}>
           {descriptions[section]}
@@ -127,8 +127,8 @@ const ShowCaseSection = ({ section, model = 'resnet34', backgroundColor = 'backg
       </Box>
       <Box p={3}></Box>
       <Box sx={{ flex: 1, maxWidth: '99%' }}>
-        <Card variant='code'>
-          <SyntaxHighlighter language="python" style={atomOneLight} >
+        <Card>
+          <SyntaxHighlighter language="python" style={atomOneLight} wrapLines={true}>
             {templates[section](model)}
           </SyntaxHighlighter>
         </Card>
