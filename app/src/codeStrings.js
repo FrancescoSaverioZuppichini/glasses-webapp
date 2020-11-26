@@ -17,6 +17,10 @@ model.encoder.features
 model(torch.rand((1,3,224,224)))
 # get the features :)
 features = model.encoder.features
+#torch.Size([1, 64, 112, 112])
+#torch.Size([1, 64, 56, 56])
+#torch.Size([1, 128, 28, 28])
+#torch.Size([1, 256, 14, 14])
 `
 ,
 'segmentation': (model) => 
@@ -47,22 +51,16 @@ postprocessing = Normalize(-cfg.mean / cfg.std, (1.0 / cfg.std))
 # apply preprocessing
 x =  cfg.transform(im).unsqueeze(0)
 model = AutoModel('${model}'
-_ = model.interpret(x, using=GradCam(), postprocessing=postprocessing).show()`,
+_ = model.interpret(x, using=GradCam(), postprocessing=postprocessing).show()
+`,
 
 'customization': (model) => 
-`from glasses.nn.models.classification.vgg import VGGBasicBlock
-from glasses.nn.models.classification.resnet import ResNetBasicBlock, ResNetBottleneckBlock
-from glasses.nn.models.classification.senet import SENetBasicBlock, SENetBottleneckBlock
-from glasses.nn.models.classification.resnetxt import ResNetXtBottleNeckBlock
-from glasses.nn.models.classification.densenet import DenseBottleNeckBlock
-from glasses.nn.models.classification.wide_resnet import WideResNetBottleNeckBlock
-from glasses.nn.models.classification.efficientnet import EfficientNetBasicBlock
-from glasses import AutoModel
+`from glasses import AutoModel
+from glasses.nn.att import SpatialSE
+from  glasses.nn.models.classification.resnet import ResNetBottleneckBlock
 # load a model and change the inner block
 model = model = AutoModel('${model}', block=WideResNetBottleNeckBlock)
 # create a custom block and pass it to the model
-from glasses.nn.att import SpatialSE
-from  glasses.nn.models.classification.resnet import ResNetBottleneckBlock
 # create a squeeze and excitation bottleneck block!
 class SEResNetBottleneckBlock(ResNetBottleneckBlock):
     def __init__(self, in_features: int, out_features: int, squeeze: int = 16, *args, **kwargs):
