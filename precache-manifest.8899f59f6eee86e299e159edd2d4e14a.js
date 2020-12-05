@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a9080bfbf60994a419e39b375d862383",
+    "revision": "71b71b02ef95f282992b189e690893ac",
     "url": "/glasses-webapp/index.html"
   },
   {
-    "revision": "26fc1c7ae06226508562",
+    "revision": "74569ffc396021a15d30",
     "url": "/glasses-webapp/static/css/main.babe7f58.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/glasses-webapp/static/js/2.da77464b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "26fc1c7ae06226508562",
-    "url": "/glasses-webapp/static/js/main.0a9f0ecb.chunk.js"
+    "revision": "74569ffc396021a15d30",
+    "url": "/glasses-webapp/static/js/main.728e9308.chunk.js"
   },
   {
     "revision": "37dcad765b6c16529aa8",
