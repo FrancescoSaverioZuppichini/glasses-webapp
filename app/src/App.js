@@ -8,7 +8,6 @@ import { atomOneLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { templates, models } from './codeStrings'
 import ReactMarkdown from 'react-markdown'
 import github from './github.svg'
-// import axios from 'axios'
 
 const links = [{
   text: 'Glasses',
@@ -28,8 +27,6 @@ const links = [{
 }
 
 ]
-
-// const sections = ['classification', 'segmentation', 'interpretability', 'customization']
 
 const NavBar = ({ links }) => (
   <Flex sx={{ width: '100%' }}>
@@ -114,32 +111,6 @@ const Actions = () => {
   )
 }
 
-// const ShowCaseSection = ({ section, model = 'resnet34', backgroundColor = 'background' }) =>
-//   <Box variant='section' sx={{ backgroundColor: backgroundColor }}>
-//     <Text sx={{ fontSize: 4 }}>{section.charAt(0).toUpperCase() + section.slice(1)}
-//     </Text>
-//     <Box mb={2} />
-//     <Flex sx={{ flexDirection: ['column', 'column', 'column', 'row'], alignItems: 'center' }}>
-//       <Box sx={{ flex: 1 }}>
-//         <Text sx={{ fontSize: 2 }}>
-//           {descriptions[section]}
-//         </Text>
-//       </Box>
-//       <Box p={3}></Box>
-//       <Box sx={{ flex: 1, maxWidth: '99%' }}>
-//         <Card>
-//           <SyntaxHighlighter language="python" style={atomOneLight} wrapLines={true}>
-//             {templates[section](model)}
-//           </SyntaxHighlighter>
-//         </Card>
-//       </Box>
-
-//     </Flex>
-//   </Box>
-
-
-
-
 const Header = () => (
   <Box sx={{ flex: 2 }}>
     <Flex sx={{ flexDirection: 'column' }}>
@@ -163,25 +134,9 @@ const Footer = () => (
     <Link href='https://www.linkedin.com/in/francesco-saverio-zuppichini-94659a150/' variant='primary'> Francesco Saverio Zuppichini</Link> and
     <Link href='https://www.linkedin.com/in/francescocicala/' variant='primary'> Francesco Cicala</Link>
     </Text>
-
   </Flex >
 
 )
-
-// const Table = () => {
-//   const [table, setTable] = useState('')
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const { data } = await axios.get('https://raw.githubusercontent.com/FrancescoSaverioZuppichini/glasses/develop/table.md')
-//       setTable(data)
-
-//     }
-//     fetchData()
-//   }, [])
-
-//   return <ReactMarkdown source={table}></ReactMarkdown>
-// }
 
 function App() {
   return (
@@ -191,36 +146,20 @@ function App() {
           <Box sx={{ flex: 0 }}>
             <NavBar links={links} />
           </Box>
+          <Box sx={{flexGrow: 1}} />
           <Flex sx={{ flexDirection: 'column' }}>
-            <Box py={[3, 4, 6]} />
             <Flex sx={{ flexDirection: ['column', 'column', 'column', 'row'] }} px={[2, 3, 4]}>
               <Header />
-              <Box sx={{ flex: 1, maxWidth: ['92vw'], minWidth: [0, '600px'] }}>
+              <Box sx={{ flex: 1, minWidth: [0, '400px'] }}>
                 <Code />
               </Box>
             </Flex>
           </Flex>
           <Box mt={3} />
           <Box sx={{ flexGrow: 1 }} />
-          <Box py={[3, 4, 6]} />
           <Box p={4}><Footer /></Box>
-
         </Flex>
       </Flex>
-      {/* {sections.map((section, i) => {
-        const backgroundColor = i % 2 ? 'background' : 'white'
-        return (<ShowCaseSection section={section} model='resnet34' backgroundColor={backgroundColor} key={section} />)
-      })} */}
-      {/* <Box variant='section'>
-        <Text sx={{ fontSize: 4 }}>Models
-            </Text>
-        <Box p={2}></Box>
-        <Card variant='code' sx={{overflowX: 'scroll'}}>
-          <Table />
-        </Card>
-
-      </Box> */}
-      {/* <Box p={4}><Footer /></Box> */}
     </ThemeProvider >
   );
 }
