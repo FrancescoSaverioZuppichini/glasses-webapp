@@ -19,11 +19,11 @@ const links = [{
 },
 {
   text: 'Examples',
-  href: 'https://francescosaveriozuppichini.github.io/glasses/tutorials/README.html#getting-started'
+  href: 'https://francescosaveriozuppichini.github.io/glasses/tutorials/Transfer%20Learning.html'
 },
 {
   text: 'Models',
-  href: 'https://francescosaveriozuppichini.github.io/glasses/glasses.nn.models.html'
+  href: 'https://francescosaveriozuppichini.github.io/glasses/glasses.models.html'
 }
 
 ]
@@ -105,8 +105,8 @@ const Actions = () => {
   return (
     <Flex sx={{ flexWrap: 'wrap' }}>
       <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/')}>Doc</Button>
-      <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/tutorials/README.html#getting-started')}>Examples</Button>
-      <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/glasses.nn.models.html')}>Models</Button>
+      <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/tutorials/Transfer%20Learning.html')}>Examples</Button>
+      <Button m={2} onClick={() => toLink('https://francescosaveriozuppichini.github.io/glasses/glasses.models.html')}>Models</Button>
     </Flex>
   )
 }
