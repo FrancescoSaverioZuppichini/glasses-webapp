@@ -131,8 +131,7 @@ built on top of <strong>PyTorch</strong></Text>
 const Footer = () => (
   <Flex>
     <Text>Made with <span role='img' aria-label="love">❤️</span> by
-    <Link href='https://www.linkedin.com/in/francesco-saverio-zuppichini-94659a150/' variant='primary'> Francesco Saverio Zuppichini</Link> and
-    <Link href='https://www.linkedin.com/in/francescocicala/' variant='primary'> Francesco Cicala</Link>
+    <Link href='https://www.linkedin.com/in/francesco-saverio-zuppichini-94659a150/' variant='primary'> Francesco Saverio Zuppichini</Link>
     </Text>
   </Flex >
 
